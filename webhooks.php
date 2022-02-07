@@ -5,6 +5,16 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
 $access_token = 'HWo5n9a0MDh5XLLNjHjpvI5qgG0/bCO2wUx92DagXo1TqCiMchGXbuTP0bLwd4NslAq9bxUUn3RLvQJ585KHwHDOIIUaFMRjSh8VPBP2pEfQGO7KTsAjpPRVwvofZbvCPUUwvPSUhz9CNYUm773HigdB04t89/1O/w1cDnyilFU=';
 
+$channelSecret = '2daf1aa9e79dd0dfb484e9e6b9f9c274';
+$idPush = 'U09454915316e87e71586d8f4958e8e4c'
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+$response = $bot->pushMessage($idPush, $textMessageBuilder);
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+
+
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
