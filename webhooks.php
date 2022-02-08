@@ -88,7 +88,7 @@ foreach ($events as $event) {
 			$outputText = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("demo command: text, location, button, confirm to test message template");	
 			break;
 		}
-		$response = $bot->replyMessage($event->getReplyToken(), $outputText);
+		$response = $bot->pushMessage($event->getReplyToken(), $outputText);
 	}
 
 }  
